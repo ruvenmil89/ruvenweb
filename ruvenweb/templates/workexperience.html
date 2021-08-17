@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<div class="container">
+<table>
+  <tr>
+    <th>Years</th>
+    <th>Work Place</th>
+    <th>Role</th>
+  </tr>
+  {% for item in experirnces %}
+  <tr>
+    <td>{{ item.years}}</td>
+    <td>{{ item.company}}</td>
+    <td>{{ item.role}}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}
