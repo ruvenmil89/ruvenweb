@@ -5,13 +5,13 @@ pipeline {
       steps {
         echo 'Build dokcer image for Ruven web!'
           retry(3){
-            docker build . -t ruven:latest
+            sh 'docker build . -t ruven:latest'
           }
         }
       }
     stage("Deploy"){
       steps{
-        echo " Deploy Ruven image over k8s gke"
+        echo " Deploy Ruven image over k8s GKE"
       }
     }
   }
