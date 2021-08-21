@@ -4,9 +4,6 @@ pipeline {
     stage("Build docker image"){
       steps {
         echo 'Build dokcer image for Ruven web!'
-          retry(3){
-            sh 'docker build . -t ruven:latest'
-          }
         }
       }
     stage("Deploy"){
