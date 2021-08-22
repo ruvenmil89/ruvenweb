@@ -4,6 +4,10 @@ pipeline {
     stage("Install Helm"){
       steps {
        sh 'echo hello world'
+       sh 'curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3'
+       sh 'chmod 700 get_helm.sh'
+       sh './get_helm.sh'
+       sh 'helm list --all -A'
       }
     }
     stage("Connect to GKE k8s") {
@@ -17,7 +21,7 @@ pipeline {
         echo 'Build dokcer image for Ruven web!'
         sh 'ls'
         sh 'docker login docker.io -u ruvenmil -p 1234ynck09'
-        sh 'docker build . ruvenmil/ruvenweb:1.0'
+        sh 'docker build . -t ruvenmil/ruvenweb:1.0'
         sh 'docker push ruvenmil/ruvenweb:1.0'
         }
       }
