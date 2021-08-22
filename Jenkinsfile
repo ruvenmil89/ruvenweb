@@ -3,11 +3,9 @@ pipeline {
   stages {
     stage("Install Helm"){
       steps {
-       sh 'echo hello world'
-       sh 'wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz'
-       sh 'tar -zxvf helm-v3.6.3-linux-amd64.tar.gz'
-       sh 'mv linux-amd64/helm /usr/local/bin/helm'
-       sh 'helm list --all -A'
+       sh '''#!/bin/bash
+           echo "hello world"
+           helm list --all -A'''
       }
     }
     stage("Connect to GKE k8s") {
