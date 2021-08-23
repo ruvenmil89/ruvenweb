@@ -20,6 +20,11 @@ def family():
     return render_template('family.html')
 
 
+@app.route("/healthy")
+def healthy():
+    return "OK"
+
+
 @app.route("/feedback", methods=['GET', 'POST'])
 def feedback():
     db_connection = Feedback.create_connection("ruvenweb/ruvenweb.db")
