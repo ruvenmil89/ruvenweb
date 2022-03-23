@@ -7,31 +7,92 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/main.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body style="background-color: #037252 ;">
+<style>
+    footer {
+        position: relative;
+        height: 300px;
+        width: 100%;
+
+    }
+
+    p.copyright {
+        font-family: 'Lobster', cursive;
+        font-family: 'Roboto', sans-serif;
+        position: absolute;
+        width: 100%;
+        line-height: 40px;
+        font-size: 1em;
+        text-align: center;
+        bottom:0;
+    }
+</style>
+<body class="backgroundweb">
 
 <nav class="navbar navbar-default" style="color: #808080 ;">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Ruven's Website</a>
     </div>
-    <ul class="nav navbar-nav" >
-      <li class="active"><a href="/">Home</a></li>
+    <ul class="nav navbar-nav welcome" >
+      <li><a href="/">Home</a></li>
       <li><a href="{{ url_for('hobbies') }}">Hobbies</a></li>
       <li><a href="{{ url_for('family') }}">Family</a></li>
       <li><a href="{{ url_for('workexperirnce') }}">Work experirnce</a></li>
         <li><a href="{{ url_for('eduction') }}">Eduction</a></li>
       <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        <li><a href="{{ url_for('profile') }}">Profile</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
     </ul>
   </div>
 </nav>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="flashes alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 {% block content %}
 <div class="container">
-  <h2>Welcome Home</h2>
-  <p>This is a just home page example.</p>
+  <h2 class="welcome">Welcome to my profile<br><br></h2>
+  <p class="mainfont">Hello, my name is Ruven Milshtein. I'm 33 years old, married +1. I currently live in Israel.<br>
+      I have been a software/DevOps engineer since 2016, and specialize in cloud computing, software networking, public cloud and many more.<br>
+      i love to learn new technologies and always eager to do interesting things <br>
+      Before becoming a software engineer, I traveled in many place around the world.<br>
+      In my free time, I enjoy hiking, cock pizza, and exploring the world with my family.</p>
+    <center><img  src="{{url_for('static', filename='ruvenpic.jpg')}}" alt="ruven" style=margin-left:20px; width="540px"; height="auth" ></center>
 </div>
+    <br>
+    <div class="container ">
+        <h2 class="welcome">The technologies behind this web<br><br></h2>
+        <p >
+        <ul class="mainfont">
+        <li>Flask - webserver in python</li>
+        <li>Docker - the web runs in conatiner</li>
+        <li>k8s for deploy the web in google kubernetes enginee</li>
+        <li>Helm - packaging the software</li>
+        <li>Redis - For rate limit - try to refresh this page 3 times</li>
+        <li>Sqlite - Just for keeping the users login and also for the feedbacks</li>
+        <li>EFK - elasticsearch+fluetned+kibana - For monitoring the web</li>
+        <li>CSS - A little bit</li>
+    </ul>
+
+
+    </div>
+    <footer>
+        <p class="copyright">Created by Ruven Milshtein. © 2022</p>
+    </footer>
 {% endblock %}
 </body>
+
 </html>

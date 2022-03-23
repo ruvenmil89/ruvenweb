@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<body class="text-center">
+<body class="text-center backgroundweb">
     <div class="container">
         <form method="POST" class="form-register" style="color:white">
             {{ form.hidden_tag() }}
@@ -39,12 +39,15 @@
         {% for item in users_comments %}
 
 
-                <br><li>Name: {{ item.1}}</br>
-                <br>Email: {{ item.2}}</br>
-                <br>Comment: {{ item.3}}</br>
+                <br><li>Name: {{ item.name}}</br>
+                <br>Email: {{ item.email}}</br>
+                <br>Comment: {{ item.description}}</br>
             </li>
             {% endfor %}
         </ol>
+    </div>
+    <div style="position: absolute; text-align: center;margin-left: auto; margin-right: auto; bottom: 5px;left: 0; right: 0; ">
+        Created by Ruven Milshtein. © 2022
     </div>
 </body>
 

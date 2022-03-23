@@ -54,6 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "helmruvenweb.serviceAccountName" -}}
+
 {{- if .Values.serviceAccount.create }}
 {{- default (include "helmruvenweb.fullname" .) .Values.serviceAccount.name }}
 {{- else }}

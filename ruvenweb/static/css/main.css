@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100;1,300&display=swap');
+
+.welcome {
+    font-family: 'Lobster', cursive;
+}
+.backgroundweb {
+    background: mistyrose;
+}
+
+#gogo {
+    color: chocolate;
+    background: grey;
+}
+
+.mainfont {
+    font-family: 'Lobster', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    line-height: 2;
+    font-size: medium;
+}
+

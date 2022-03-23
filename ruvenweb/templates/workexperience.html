@@ -9,29 +9,36 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-family: 'Lobster', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    line-height: 2;
+    font-size: medium;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+
 </style>
+<link rel="stylesheet" href="../static/css/main.css">
 <div class="container">
 <table>
   <tr>
-    <th>Years</th>
-    <th>Work Place</th>
-    <th>Role</th>
+    <th style="font-weight: bold">Years</th>
+    <th style="font-weight: bold">Work Place</th>
+    <th style="font-weight: bold">Role</th>
   </tr>
   {% for item in experirnces %}
   <tr>
-    <td>{{ item.years}}</td>
-    <td>{{ item.company}}</td>
+    <td style="font-weight: bold">{{ item.years}}</td>
+    <td style="font-weight: bold">{{ item.company}}</td>
     <td>{{ item.role}}</td>
   </tr>
   {% endfor %}
 </table>
 </div>
+    <footer>
+        <p class="copyright">Created by Ruven Milshtein. © 2022</p>
+    </footer>
 {% endblock %}

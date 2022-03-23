@@ -9,67 +9,82 @@ img {
   float: left;
 }
 p {
-  color: white;
-  margin-left:30px;
+    font-family: 'Lobster', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    line-height: 1.5;
+    font-size: medium;
+    margin-left:30px;
 }
 h2 {
-  color: white;
-  margin-left:30px;
+    font-family: 'Lobster', cursive;
+    margin-left:30px;
 }
 </style>
 </head>
-<body>
+<body class="backgroundweb">
 
 <div class="w3-container">
 <h2 class="w3-container mb-3 font-weight-normal" > Me</h2>
 
 
-<p><img  src="{{url_for('static', filename='ruven.jpg')}}" alt="ruven" style="width:300px;height:250px;margin-left:30px" class="center">
+<p><img  src="{{url_for('static', filename='ruven.jpg')}}" alt="ruven" style="width:300px;height:auto;margin-left:30px" class="center">
     <br>&nbsp;&nbsp; This pic was taken in Whistler.  Whistler is a town north of Vancouver, British Columbia,</br>
     <br>&nbsp;&nbsp; that's home to Whistler Blackcomb, one of the largest ski resorts in North America. </br>
     <br>&nbsp;&nbsp; Besides skiing and snowboarding, the area offers snowshoeing, tobogganing and ski jumping at the Olympic Park,
     a venue for the 2010 Vancouver Winter Olympics.</br></p></figure>
-</div>
 
 
+
 <br></br>
 <br></br>
 <br></br>
-<div class="w3-container">
+
+
+
 <h2 class="mb-3 font-weight-normal"> Neta my lovely wife</h2>
 
 
-<p><img  src="{{url_for('static', filename='neta.jpg')}}" alt="neta" style="width:300px;height:250px;margin-left:30px;" >
+<p><img  src="{{url_for('static', filename='neta.jpg')}}" alt="neta" style="width:300px;height:auto;margin-left:30px;" >
     <br>&nbsp;&nbsp;This is my dear wife </br>
     <br>&nbsp;&nbsp;From the first time I saw her I was pretty sure that this relationship will lead to a wedding</br>
     <br>&nbsp;&nbsp;This pic was taken in my favorite place, California </br></p>
-</div>
 
 
+    <br></br>
+    <br></br>
+    <br></br>
 
 <br></br>
 <br></br>
 <br></br>
-<div class="w3-container">
+
 <h2 class="mb-3 font-weight-normal"> Adam my beautiful son</h2>
 
-<p><img  src="{{url_for('static', filename='adam.jpg')}}" alt="adam" style="width:300px;height:250px;margin-left:30px;" >
+<p id="adam"><img  src="{{url_for('static', filename='adam.jpg')}}" alt="adam" style="width:300px;height:auto;margin-left:30px;" >
 <br>&nbsp;&nbsp;This is my son, his name Adam </br>
 <br>&nbsp;&nbsp;He was born on a date 16/10/2020 </br>
 <br>&nbsp;&nbsp;He brings us happiness and lots of love </br></p>
-</div>
+
 
 <br></br>
 <br></br>
 <br></br>
-<div class="w3-container">
+    <br></br>
+    <br></br>
+    <br></br>
+
 <h2 class="mb-3 font-weight-normal"> Neta & Me</h2>
 
 
-<p><img  src="{{url_for('static', filename='ruven&neta.jpg')}}" alt="neta&ruven" style="width:300px;height:250px;margin-left:30px;" >
+<p><img  src="{{url_for('static', filename='ruven&neta.jpg')}}" alt="neta&ruven" style="width:300px;height:auto;margin-left:30px;" >
     <br>&nbsp;&nbsp;Golden bridge in San Francisco  </br>
     <br>&nbsp;&nbsp;I'm so missing this place, I must to be there one more time</br></p>
 
+
 </div>
+<footer>
+    <p class="copyright">Created by Ruven Milshtein. © 2022</p>
+</footer>
 </body>
 {% endblock %}

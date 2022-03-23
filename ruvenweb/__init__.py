@@ -13,7 +13,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ruvenweb.db'
 app.config['SECRET_KEY'] = SECRET_KEY
 db = SQLAlchemy(app)
 
-
 from ruvenweb import routes
 
 
