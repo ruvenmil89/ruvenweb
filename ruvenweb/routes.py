@@ -1,4 +1,4 @@
-from ruvenweb import app
+from ruvenweb import app, config
 import json
 import requests
 from flask_login import (
@@ -22,17 +22,23 @@ from ruvenweb import db
 from redis import Redis as redis
 from flask_bcrypt import Bcrypt
 
+config.read("ruvenweb/config.ini")
+efk_url = config['TOOLS']['EFK_URL']
+if config['APP']['ENVIRONMENT'] == 'kubernetes':
+  redis_url = config['TOOLS']['REDIS_URL'] + "." + config['TOOLS']['REDIS_NAMESPACE'] + ".svc.cluster.local"
+else:
+  redis_url = config['TOOLS']['REDIS_URL']
 csrf = CSRFProtect()
 csrf.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 bcrypt = Bcrypt(app)
-r = redis(host="localhost", port=7001)
+r = redis(host="{}".format(redis_url), port=6379)
 
 
 def rateLimit(userid) -> bool:
-    send_log()
+    send_log(userid)
     r.setnx(userid, 3)
     r.expire(userid, 10)
     if int(r.get(userid)) > 0:
@@ -46,10 +52,10 @@ def load_user(user_id):
     return UserLogin.query.get(int(user_id))
 
 
-def send_log():
-    data = {'temperature': "hello"}
+def send_log(userid):
+    data = {'user': "Just {} enter".format(userid)}
     data_json = json.dumps(data)
-    r = requests.get('http://localhost:9880/ratelimit.log', json=data)
+    r = requests.get('http://{}:9880/ratelimit.log'.format(efk_url), json=data)
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -70,8 +76,7 @@ def login():
 @login_required
 def homepage():
     if not rateLimit(request.remote_addr):
-
-        return redirect(url_for('ratelimit'),502)
+        return redirect(url_for('ratelimit'))
     return render_template('base.html')
 
 
@@ -164,6 +169,7 @@ def register():
         new_user = UserLogin(username=form.username.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
+        return redirect(url_for('login'))
     if form.errors != {}:  # If there are not errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}')

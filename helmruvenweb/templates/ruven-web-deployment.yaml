@@ -37,6 +37,8 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
+          volumeMounts:
+          {{- include "helmruvenweb.exampleFileVolumeMount" . | indent 12 }}
           livenessProbe:
             httpGet:
               path: /healthy
@@ -46,19 +48,21 @@ spec:
             httpGet:
               path: /healthy
               port: http
-          
-
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+      - name: example-file
+        configMap:
+            name: {{ .Release.Name }}-example-conf
       {{- with .Values.nodeSelector }}
       nodeSelector:
-        {{- toYaml . | nindent 8 }}
+      {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.affinity }}
       affinity:
-        {{- toYaml . | nindent 8 }}
+      {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
-        {{- toYaml . | nindent 8 }}
+      {{- toYaml . | nindent 8 }}
       {{- end }}

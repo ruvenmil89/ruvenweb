@@ -13,6 +13,13 @@
     background: grey;
 }
 
+.btncomment {
+    color: white;
+    border-color: black;
+    background: indianred;
+    border-width: thick;
+
+}
 .mainfont {
     font-family: 'Lobster', cursive;
     font-family: 'Roboto', sans-serif;
