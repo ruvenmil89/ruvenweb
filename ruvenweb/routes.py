@@ -55,7 +55,7 @@ def load_user(user_id):
 def send_log(userid):
     data = {'user': "Just {} enter".format(userid)}
     data_json = json.dumps(data)
-    r = requests.get('http://{}:9880/ratelimit.log'.format(efk_url), json=data)
+    #r = requests.get('http://{}:9880/ratelimit.log'.format(efk_url), json=data)
 
 
 @app.route("/login", methods=['GET', 'POST'])
