@@ -23,7 +23,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-podAnnotations: {version: "2.0.0"}
+podAnnotations: {version: "1.0.0"}
 podSecurityContext: {}
   # fsGroup: 2000
 
